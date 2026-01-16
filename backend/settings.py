@@ -38,7 +38,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://glauciofilho.com.br",
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "OPTIONS",
+]
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://glauciofilho.com.br",
+]
 
 ROOT_URLCONF = 'backend.urls'
 
