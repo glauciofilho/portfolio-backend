@@ -40,6 +40,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://glauciofilho.com.br",
+    "https://api.glauciofilho.com.br",
 ]
 
 CORS_ALLOW_METHODS = [
@@ -55,6 +56,7 @@ CORS_ALLOW_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://glauciofilho.com.br",
+    "https://api.glauciofilho.com.br",
 ]
 
 ROOT_URLCONF = 'backend.urls'
