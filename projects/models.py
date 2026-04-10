@@ -8,6 +8,8 @@ class Project(models.Model):
     summary_pt = models.TextField()
     summary_en = models.TextField()
 
+    image_url = models.URLField(max_length=500, blank=True, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

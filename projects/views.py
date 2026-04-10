@@ -14,6 +14,7 @@ def project_list(request):
             "name": p.name_pt if lang == "pt" else p.name_en,
             "summary": p.summary_pt if lang == "pt" else p.summary_en,
             "created_at": p.created_at,
+            "image_url": p.image_url,
             "stacks": [
                 {
                     "id": link.stack.id,
