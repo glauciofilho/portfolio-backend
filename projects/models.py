@@ -75,3 +75,7 @@ class ProjectAccess(models.Model):
     country = models.CharField(max_length=100, blank=True)
     user_agent = models.TextField(blank=True)
     accessed_at = models.DateTimeField(auto_now_add=True)
+
+class Profile(models.Model):
+    resume_pdf_pt = models.URLField(max_length=500, blank=True)
+    resume_pdf_en = models.URLField(max_length=500, blank=True)

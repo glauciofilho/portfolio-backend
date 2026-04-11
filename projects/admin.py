@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Stack, StackProject, File, ProjectAccess
+from .models import Project, Stack, StackProject, File, ProjectAccess, Profile
 
 
 class StackProjectInline(admin.TabularInline):
@@ -27,3 +27,7 @@ class FileAdmin(admin.ModelAdmin):
 class ProjectAccessAdmin(admin.ModelAdmin):
     list_display = ("project", "ip_address", "country", "accessed_at")
     list_filter = ("project", "country")
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("id", "resume_pdf_pt", "resume_pdf_en")

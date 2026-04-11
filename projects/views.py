@@ -99,3 +99,13 @@ def analytics(request):
     }
 
     return JsonResponse(data)
+
+def resume(request):
+    lang = request.GET.get("lang", "en")
+    if lang == "pt":
+        resume_url = profile.resume_pdf_pt
+    else:
+        resume_url = profile.resume_pdf_en
+    return JsonResponse({
+        "resume_url": resume_url
+    })
