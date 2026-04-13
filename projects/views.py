@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
-from .models import Project, ProjectAccess, File
+from .models import Project, ProjectAccess, File, Profile
 from .utils import get_client_ip, get_user_agent, get_country_from_ip
 
 def project_list(request):
@@ -102,6 +102,9 @@ def analytics(request):
 
 def resume(request):
     lang = request.GET.get("lang", "en")
+    profile = Profile.objects.first()
+    if not profile:
+        return JsonResponse({"error": "Profile not found"}, status=404)
     if lang == "pt":
         resume_url = profile.resume_pdf_pt
     else:
