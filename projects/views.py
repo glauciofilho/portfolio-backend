@@ -102,6 +102,9 @@ def analytics(request):
 
 def resume(request):
     lang = request.GET.get("lang", "en")
+    profile = Profile.objects.first()
+    if not profile:
+        return JsonResponse({"error": "Profile not found"}, status=404)
     if lang == "pt":
         resume_url = profile.resume_pdf_pt
     else:
