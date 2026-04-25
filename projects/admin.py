@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Stack, StackProject, File, ProjectAccess, Profile
+from .models import Project, Stack, StackProject, File, Profile
 
 
 class StackProjectInline(admin.TabularInline):
@@ -23,10 +23,6 @@ class FileAdmin(admin.ModelAdmin):
     list_display = ("id", "path", "project")
 
 
-@admin.register(ProjectAccess)
-class ProjectAccessAdmin(admin.ModelAdmin):
-    list_display = ("project", "ip_address", "country", "accessed_at")
-    list_filter = ("project", "country")
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):

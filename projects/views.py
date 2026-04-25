@@ -1,8 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from django.db.models import Count
-from .models import Project, ProjectAccess, File, Profile
-from .utils import get_client_ip, get_user_agent, get_country_from_ip
+from .models import Project, File, Profile
 
 def project_list(request):
     lang = request.GET.get("lang", "en")
@@ -31,14 +29,7 @@ def project_detail(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     lang = request.GET.get("lang", "en")
 
-    ip = get_client_ip(request)
 
-    ProjectAccess.objects.create(
-        project=project,
-        ip_address=ip,
-        user_agent=get_user_agent(request),
-        country=get_country_from_ip(ip)
-    )
 
     files = [
         {
@@ -78,27 +69,6 @@ def file_detail(request, id_project, id_file):
     return JsonResponse(data)
 
 
-def analytics(request):
-    lang = request.GET.get("lang", "en")
-    if lang == "pt":
-        name = "name_pt"
-    else:
-        name = "name_en"
-    data = {
-        "total_accesses": ProjectAccess.objects.count(),
-        "projects": list(
-            Project.objects.annotate(
-                total=Count("accesses")
-            ).values("id", name, "total")
-        ),
-        "countries": list(
-            ProjectAccess.objects.values("country")
-            .annotate(total=Count("id"))
-            .order_by("-total")
-        )
-    }
-
-    return JsonResponse(data)
 
 def resume(request):
     lang = request.GET.get("lang", "en")

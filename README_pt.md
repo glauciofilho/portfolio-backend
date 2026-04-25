@@ -76,7 +76,7 @@ portifolio-backend/
 │   ├── models.py             # Modelos de dados
 │   ├── views.py              # Visões/Controllers
 │   ├── urls.py               # Roteamento específico
-│   ├── utils.py              # Funções utilitárias
+
 │   ├── migrations/           # Histórico de migrations
 │   └── tests.py              # Testes unitários
 ├── analytics/                 # App de integração com Google Analytics
@@ -279,7 +279,7 @@ Gerencia os projetos do portfólio:
 - **models.py** - Define Project, Stack, StackProject, File
 - **views.py** - APIs REST para projetos
 - **urls.py** - Endpoints: `/api/projects/`, `/api/stacks/`
-- **utils.py** - Funções auxiliares
+
 - **admin.py** - Interface administrativa
 
 ### Diretório `analytics/`
@@ -387,15 +387,15 @@ Gerenciamento de mensagens de contato:
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
-| GET | `/contact/messages/` | Listar mensagens de contato |
-| POST | `/contact/messages/` | Criar nova mensagem |
+| POST | `/contact/form/` | Criar nova mensagem |
 
 ### Analytics
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
-| GET | `/analytics/data/` | Obter dados do GA |
-| GET | `/analytics/reports/` | Obter relatórios do GA |
+| GET | `/analytics/overview/` | Obter dados de visão geral do GA |
+| GET | `/analytics/countries/` | Obter dados de países do GA |
+| GET | `/analytics/projects/` | Obter dados de projetos do GA |
 
 ### Administração
 

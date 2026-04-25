@@ -64,17 +64,7 @@ class File(models.Model):
         return self.path
 
 
-class ProjectAccess(models.Model):
-    project = models.ForeignKey(
-        Project,
-        related_name="accesses",
-        on_delete=models.CASCADE
-    )
 
-    ip_address = models.GenericIPAddressField()
-    country = models.CharField(max_length=100, blank=True)
-    user_agent = models.TextField(blank=True)
-    accessed_at = models.DateTimeField(auto_now_add=True)
 
 class Profile(models.Model):
     resume_pdf_pt = models.URLField(max_length=500, blank=True)
